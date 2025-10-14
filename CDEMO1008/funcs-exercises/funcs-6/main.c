@@ -7,7 +7,7 @@ bool isVowel(char letter) {
   else return false;
 }
 
-int countVowels(char *input) {
+int countVowels(char input[256]) {
   int count = 0;
     for (int i = 0; i < strlen(input); i++) {
     char ch = input[i];
@@ -16,10 +16,20 @@ int countVowels(char *input) {
   return count;
 }
 
+int countLetters(char input[256]) {
+  int count = 0;
+  for (int i = 0; i < strlen(input); i++) {
+    char ch = input[i];
+    if (ch != ' ') count++;
+  }
+  return count;
+}
+
 int main() {
   char input[256];
   printf("Input your string:\n");
   scanf("%255s", input);
+  
 
-  printf("String contains %d vowels\n", countVowels(input));
+  printf("String contains %d vowels, %d letters in total (not counting spaces)\n", countVowels(input), countLetters(input));
 }
