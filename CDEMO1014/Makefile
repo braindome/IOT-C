@@ -1,5 +1,5 @@
 PROG = main
-SRC = main.c inputhelpers.c
+SRC = main.c
 CFLAGS=-Wall -Werror -g
 LIBS = 
 all: $(PROG)
