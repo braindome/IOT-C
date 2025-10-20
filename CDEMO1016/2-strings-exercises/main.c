@@ -6,13 +6,33 @@ void validateMail() {
   // Be användaren mata in en mailadress. Programmet skall kontrollera att inmatningen är rätt 
   // dvs att det finns ett @ tecken och att det finns en . med 2 eller 3 tecken efter. 
   // Meddela användaren om det är rätt eller felaktig adress
+    char text[100];
+    char letterInput[2];
+
+    GetInput("Ange en email:",text, sizeof(text));
+
+    bool containsAt = strchr(text, '@');
+    bool containsDot = false;
+    bool okAfter = false;
+    char *lastDot = strrchr(text, '.');
+    if(lastDot){
+        containsDot = true;
+        int pos = lastDot - text;
+        int after = strlen(text) - pos - 1;
+        okAfter = after == 2 || after == 3;
+    }
+    if(containsAt && containsDot && okAfter){
+        printf("Ok e-post");
+    }else{
+        printf("Invalid e-post");
+    }
 }
 
 void replace() {
   char str[50] = "Detta är en sträng som du skall ändra";
   int charCount = 0;
 
-  for(int i = 0; i << strlen(str); i++) {
+  for(int i = 0; i < strlen(str); i++) {
     if(str[i] == ' ') {
       charCount++;
       str[i] = '*';
@@ -65,5 +85,6 @@ void firstOccurrence() {
 int main() { 
   // firstOccurrence(); 
   // loopThruString();
-  replace();
+  // replace();
+  validateMail();
 }
